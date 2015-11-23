@@ -43,36 +43,6 @@
   var _$fileButton;
 
   var FileUpload = function(uploadFile, $upload) {
-    var _startAjax = function() {
-      var self = this;
-      var _ajaxSettings = $.extend({
-        xhr: function() {
-          var xhr = new global.XMLHttpRequest();
-          // アップロードの進捗
-          xhr.upload.addEventListener('progress', function(event) {
-            self.progress.call(self, event);
-          }, false);
-          // 中止の場合
-          xhr.addEventListener('abort', function(event) {
-            self.abort.call(self, event);
-          }, false);
-
-          return xhr;
-        },
-        url: _settings.url,
-        data: self.formData
-      }, _defaultAjaxSettings);
-
-      return $.ajax(_ajaxSettings).done(function(data) {
-        _settings.doneCallBack.call(self, data);
-        self.ajax = null;
-      }).fail(function(xhr, textStatus, errorThrown) {
-        console.log(xhr, textStatus, errorThrown);
-        _settings.failCallBack.call(self, xhr, textStatus, errorThrown);
-        self.ajax = null;
-      });
-    };
-
     // コンストラクタ
     this.$upload = $upload;
     this.$uploadInfo = this.$upload.find(_settings.uploadInfo);
@@ -93,12 +63,39 @@
     this.formData = new FormData();
     this.formData.append("file", uploadFile);
 
-    this.ajax = _startAjax.call(this);
-
     // イベント処理
     var self = this;
     $('#stop').on('click', function() {
       self.stop();
+    });
+  };
+
+  FileUpload.prototype.start = function() {
+    var self = this;
+    var _ajaxSettings = $.extend({
+      xhr: function() {
+        var xhr = new global.XMLHttpRequest();
+        // アップロードの進捗
+        xhr.upload.addEventListener('progress', function(event) {
+          self.progress.call(self, event);
+        }, false);
+        // 中止の場合
+        xhr.addEventListener('abort', function(event) {
+          self.abort.call(self, event);
+        }, false);
+
+        return xhr;
+      },
+      url: _settings.url,
+      data: self.formData
+    }, _defaultAjaxSettings);
+
+    return $.ajax(_ajaxSettings).done(function(data) {
+      _settings.doneCallBack.call(self, data);
+      self.ajax = null;
+    }).fail(function(xhr, textStatus, errorThrown) {
+      _settings.failCallBack.call(self, xhr, textStatus, errorThrown);
+      self.ajax = null;
     });
   };
 
@@ -168,7 +165,8 @@
       // ファイルの情報を取得
       var uploadFiles = _$fileButton[0].files;
       for (var i = 0; i < uploadFiles.length; i++) {
-        new FileUpload(uploadFiles[i], $this);
+        var fileUpload = new FileUpload(uploadFiles[i], $this);
+        fileUpload.start();
       }
     });
   };
