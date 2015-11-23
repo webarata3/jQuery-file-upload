@@ -76,11 +76,13 @@
     this.fileName = uploadFile.name;
     this.fileSize = uploadFile.size;
     this.loadedSize = 0;
-    
+
     // 行内の要素
     this.$uploadInfoRow.html(_settings.rowHtml);
     for (var prop in _settings.rowEl) {
-      this[prop] = this.$uploadInfoRow.find(_settings.rowEl[prop]);
+      if (_settings.rowEl.hasOwnProperty(prop)) {
+        this[prop] = this.$uploadInfoRow.find(_settings.rowEl[prop]);
+      }
     }
 
     this.formData = new FormData();
@@ -89,6 +91,7 @@
     this.ajax = _startAjax.call(this);
 
     // イベント処理
+    var self = this;
     $('#stop').on('click', function() {
       self.ajaxStop();
     });
@@ -126,13 +129,13 @@
 
   /**
    * 表示用のファイルサイズ
-   * @param size 実際のファイルサイズ（バイト）
+   * @param plainSize 実際のファイルサイズ（バイト）
    * @returns {string} 表示用のファイルサイズ
    */
-  FileUpload.prototype.getDispFileSize = function(size) {
+  FileUpload.prototype.getDispFileSize = function(plainSize) {
     var SIZE_UNIT = ['B', 'KB', 'MB', 'GB', 'TB'];
 
-    var size = parseInt(size, 10);
+    var size = parseInt(plainSize, 10);
 
     for (var i = 0; i < SIZE_UNIT.length; i++) {
       if (size < 1000) break;
@@ -142,7 +145,7 @@
     if (size === Math.floor(size)) {
       size = Math.floor(size);
     } else {
-      size = size.toPrecision(3)
+      size = size.toPrecision(3);
     }
 
     return size + SIZE_UNIT[i];
@@ -166,4 +169,4 @@
       }
     });
   };
-})(this, jQuery);
+})(window, jQuery);
