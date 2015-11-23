@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba90135d-59e1-4be6-a4d6-7f8589773b3c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.jshintrc" afterPath="$PROJECT_DIR$/.jshintrc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/jquery.file-upload.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/jquery.file-upload.js" />
     </list>
     <ignored path="jQuery-file-upload.iws" />
@@ -28,8 +26,8 @@
       <file leaf-file-name="jquery.file-upload.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/js/jquery.file-upload.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.6730769">
-              <caret line="87" column="35" selection-start-line="87" selection-start-column="35" selection-end-line="87" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.47115386">
+              <caret line="61" column="26" selection-start-line="61" selection-start-column="26" selection-end-line="61" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -82,8 +80,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/webapp/index.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/main.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/jquery.file-upload.js" />
         <option value="$PROJECT_DIR$/.jshintrc" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/jquery.file-upload.js" />
       </list>
     </option>
   </component>
@@ -469,8 +467,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/jquery.file-upload.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.6730769">
-          <caret line="87" column="35" selection-start-line="87" selection-start-column="35" selection-end-line="87" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.47115386">
+          <caret line="61" column="26" selection-start-line="61" selection-start-column="26" selection-end-line="61" selection-end-column="26" />
           <folding />
         </state>
       </provider>

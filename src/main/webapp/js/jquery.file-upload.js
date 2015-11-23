@@ -13,6 +13,11 @@
     abortCallBack: function() {},
     doneCallBack: function() {},
     failCallBack: function() {},
+    stopCallBack: function() {
+      if (this.ajax) {
+        this.ajax.abort();
+      }
+    },
     // 行内の要素
     rowHtml:
       '<div class="fileName"></div>' +
@@ -93,7 +98,7 @@
     // イベント処理
     var self = this;
     $('#stop').on('click', function() {
-      self.ajaxStop();
+      self.stop();
     });
   };
 
@@ -121,10 +126,8 @@
   /**
    * アップロードを明示して停止する際のメソッド
    */
-  FileUpload.prototype.ajaxStop = function() {
-    if (this.ajax) {
-      this.alax.abort();
-    }
+  FileUpload.prototype.stop = function() {
+    _settings.stopCallBack();
   };
 
   /**
