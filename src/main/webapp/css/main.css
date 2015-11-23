@@ -16,8 +16,12 @@ pre, pre *, code, kbd, pre span.keyword, textarea {
   display: block;
 }
 
+.hide {
+  display: none;
+}
+
 .uploadInfo {
-  width: 30.5em;
+  width: 32.5em;
 }
 
 .uploadInfoRow {
@@ -50,12 +54,33 @@ pre, pre *, code, kbd, pre span.keyword, textarea {
   float: left;
   height: calc(1.2em - 6px);
   padding: 3px;
-  width: calc(30.5em - 18.5em - 20px);
+  width: calc(29em - 18.5em - 20px);
 }
 
 .progressBar {
   border: solid 1px #d9d9d9;
   box-sizing: border-box;
   height: 1.2em;
-  width: 10em;
+  width: 8.5em;
+}
+
+.operation {
+  float: left;
+}
+
+.stopButton, .deleteButton {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 9pt;
+  padding: 3px;
+  line-height: 0.9em;
+  margin: 0.15em 0.15em;
+}
+
+.stopButton:hover, .stopButton:active,
+.deleteButton:hover, .deleteButton:hover {
+  background-color: #c9302c;
+  border-color: #ac2925;
 }
