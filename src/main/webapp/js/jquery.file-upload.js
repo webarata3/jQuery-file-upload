@@ -22,7 +22,11 @@
     rowHtml:
       '<div class="fileName"></div>' +
       '<div class="transferSize"></div>' +
-      '<div class="transferStatus"><div class="progressBar"></div></div>',
+      '<div class="transferStatus"><div class="progressBar"></div></div>' +
+      '<div class="operation">' +
+      '<input type="button" class="stopButton" value="停止">' +
+      '<input type="button" class="deleteButton hide" value="削除">' +
+      '</div>',
     rowEl: {
       $fileName: '.fileName',
       $transferSize: '.transferSize',
@@ -65,8 +69,8 @@
 
     // イベント処理
     var self = this;
-    $('#stop').on('click', function() {
-      self.stop();
+    this.$uploadInfoRow.find('.stopButton').on('click', function() {
+      _settings.stopCallBack.call(self);
     });
   };
 
@@ -90,7 +94,7 @@
       data: self.formData
     }, _defaultAjaxSettings);
 
-    return $.ajax(_ajaxSettings).done(function(data) {
+    self.ajax = $.ajax(_ajaxSettings).done(function(data) {
       _settings.doneCallBack.call(self, data);
       self.ajax = null;
     }).fail(function(xhr, textStatus, errorThrown) {
