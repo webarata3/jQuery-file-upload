@@ -1,7 +1,11 @@
 package link.arata.fileupload;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -12,16 +16,26 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 @WebServlet(name = "Upload", urlPatterns = { "/upload" })
-@MultipartConfig(fileSizeThreshold = 5000000, maxFileSize = 700 * 1024 * 1024, location = "/Users/arata/Desktop")
+@MultipartConfig(fileSizeThreshold = 1, maxFileSize = 700 * 1024 * 1024, location = "/Users/arata/Desktop/t")
 public class UploadServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+
+    private static final String TEMP_DIR = "/Users/arata/Desktop/o";
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("utf-8");
         Part part = request.getPart("file");
-        String name = getFilename(part);
-        part.write(name);
+        String name = part.getSubmittedFileName();
+
+        Path outputDir = Paths.get(TEMP_DIR, request.getSession().getId());
+        if (!Files.exists(outputDir)) {
+            Files.createDirectory(outputDir);
+        }
+
+        try (InputStream is = part.getInputStream()) {
+            Files.copy(is, outputDir.resolve(name));
+        }
 
         response.setCharacterEncoding("utf-8");
         response.setContentType("application/json");
@@ -30,15 +44,5 @@ public class UploadServlet extends HttpServlet {
         pw.println("{\"result\":\"ok\"}");
         pw.flush();
         pw.close();
-    }
-
-    private String getFilename(Part part) {
-        for (String cd : part.getHeader("Content-Disposition").split(";")) {
-            if (cd.trim().startsWith("filename")) {
-                return cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
-            }
-        }
-
-        return null;
     }
 }
