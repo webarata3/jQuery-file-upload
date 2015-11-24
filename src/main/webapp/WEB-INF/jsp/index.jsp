@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@page language="java"  pageEncoding="utf-8" %><%--
+--%><%@page contentType="text/html; charset=utf-8" %><%--
+--%><!DOCTYPE html>
 <html lang="ja">
  <head>
   <meta charset="utf-8">
@@ -29,7 +31,7 @@
       var barWidth = this.$progressBar.width() ? this.$progressBar.width() : 1;
       var progressStatus = loadedSize / fileSize;
       if (progressStatus === 1) {
-        this.$transferStatus.text('アップロード完了');
+        this.$transferStatus.text('アップロード完了');
         this.$stopButton.hide();
         this.$deleteButton.show();
       } else {
@@ -38,7 +40,7 @@
       }
   	},
   	failCallBack: function() {
-  	  this.$transferStatus.text('停止');
+  	  this.$transferStatus.text('エラー');
   	},
    stopCallBack: function() {
      if (this.ajax) {
