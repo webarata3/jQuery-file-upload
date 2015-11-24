@@ -31,7 +31,9 @@
       $fileName: '.fileName',
       $transferSize: '.transferSize',
       $transferStatus: '.transferStatus',
-      $progressBar: '.progressBar'
+      $progressBar: '.progressBar',
+      $stopButton: '.stopButton',
+      $deleteButton: '.deleteButton'
     }
   };
 
@@ -69,7 +71,7 @@
 
     // イベント処理
     var self = this;
-    this.$uploadInfoRow.find('.stopButton').on('click', function() {
+    this.$stopButton.on('click', function() {
       _settings.stopCallBack.call(self);
     });
   };
