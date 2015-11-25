@@ -11,10 +11,11 @@
  </head>
  <body>
   <div id="upload">
-   <input type="button" id="uploadButton" value="ファイルを選択">
-   <input type="file" id="file" multiple="multiple" style="display: none;">
-   <div class="dropArea"></div>
-   <div class="uploadInfo"></div>
+   <div class="dropArea">
+    <input type="button" id="uploadButton" value="ファイルを選択">
+    <input type="file" id="file" multiple="multiple" style="display: none;">
+    <div class="uploadInfo"></div>
+   </div>
   </div>
   <script src="js/lib/jquery-2.1.4.min.js"></script>
   <script src="js/jquery.file-upload.js"></script>
@@ -48,6 +49,18 @@
         this.ajax.abort();
       }
       this.$stopButton.hide();
+    },
+    dragEnterCallBack: function($dropArea) {
+      $dropArea.removeClass('dragLeave');
+      $dropArea.addClass('dragEnter');
+    },
+    dragLeaveCallBack: function($dropArea) {
+      $dropArea.removeClass('dragEnter');
+      $dropArea.addClass('dragLeave');
+    },
+    dragOverCallBack: function($dropArea) {
+      $dropArea.removeClass('dragLeave');
+      $dropArea.addClass('dragEnter');
     }
   });
 })(jQuery);

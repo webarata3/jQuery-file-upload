@@ -9,6 +9,7 @@
     fileButton: '#file',
     uploadInfo: '.uploadInfo',
     uploadInfoRowClass: 'uploadInfoRow',
+    dropArea: '.dropArea',
     enableDragAndDrop: true,
     progressCallBack: function() {},
     abortCallBack: function() {},
@@ -19,6 +20,9 @@
         this.ajax.abort();
       }
     },
+    dragEnterCallBack: function() {},
+    dragLeaveCallBack: function() {},
+    dragOverCallBack: function() {},
     // 行内の要素
     rowHtml:
       '<div class="fileName"></div>' +
@@ -131,7 +135,7 @@
    * アップロードを明示して停止する際のメソッド
    */
   FileUpload.prototype.stop = function() {
-    _settings.stopCallBack();
+    _settings.call.stopCallBack(this);
   };
 
   /**
@@ -159,30 +163,35 @@
   };
 
   var _initDragAndDrop = function() {
-    var self = this;
-    $(this).find('.dropArea').on('dragenter', function(e) {
+    var $this = $(this);
+    var $dropArea = $this.find(_settings.dropArea);
+    $dropArea.on('dragenter', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      $(this).css('background-color', '#f00');
+      _settings.dragEnterCallBack.call(this, $dropArea);
     });
-    $(this).find('.dropArea').on('dragleave', function(e) {
+    $dropArea.on('dragleave', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      $(this).css('background-color', '#fff');
+      _settings.dragLeaveCallBack.call(this, $dropArea);
     });
-    $(this).find('.dropArea').on('dragover', function(e) {
+    $dropArea.on('dragover', function(e) {
       e.preventDefault();
       e.stopPropagation();
+      _settings.dragOverCallBack.call(this, $dropArea);
     });
-    $(this).find('.dropArea').on('drop', function(e) {
+    $dropArea.on('drop', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      var uploadFiles = e.originalEvent.dataTransfer.files;
-      for (var i = 0; i < uploadFiles.length; i++) {
-        var fileUpload = new FileUpload(uploadFiles[i], $(self));
-        fileUpload.start();
-      }
+      _upload(e.originalEvent.dataTransfer.files, $this);
     });
+  };
+
+  var _upload = function(uploadFiles, $this) {
+    for (var i = 0; i < uploadFiles.length; i++) {
+      var fileUpload = new FileUpload(uploadFiles[i], $this);
+      fileUpload.start();
+    }
   };
 
   $.fn.fileUpload = function(options) {
@@ -201,11 +210,7 @@
     // ファイルが選択されたらアップロードする。
     _$fileButton.on('change', function() {
       // ファイルの情報を取得
-      var uploadFiles = _$fileButton[0].files;
-      for (var i = 0; i < uploadFiles.length; i++) {
-        var fileUpload = new FileUpload(uploadFiles[i], $this);
-        fileUpload.start();
-      }
+      _upload(_$fileButton[0].files, $this);
     });
   };
 })(window, jQuery);
