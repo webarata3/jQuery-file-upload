@@ -6,13 +6,14 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>ほげ</title>
+  <title>ファイルアップロード</title>
   <link rel="stylesheet" href="css/main.css">
  </head>
  <body>
   <div id="upload">
    <input type="button" id="uploadButton" value="ファイルを選択">
    <input type="file" id="file" multiple="multiple" style="display: none;">
+   <div class="dropArea"></div>
    <div class="uploadInfo"></div>
   </div>
   <script src="js/lib/jquery-2.1.4.min.js"></script>

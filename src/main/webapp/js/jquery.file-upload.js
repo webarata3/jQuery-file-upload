@@ -9,6 +9,7 @@
     fileButton: '#file',
     uploadInfo: '.uploadInfo',
     uploadInfoRowClass: 'uploadInfoRow',
+    enableDragAndDrop: true,
     progressCallBack: function() {},
     abortCallBack: function() {},
     doneCallBack: function() {},
@@ -157,6 +158,33 @@
     return size + SIZE_UNIT[i];
   };
 
+  var _initDragAndDrop = function() {
+    var self = this;
+    $(this).find('.dropArea').on('dragenter', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      $(this).css('background-color', '#f00');
+    });
+    $(this).find('.dropArea').on('dragleave', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      $(this).css('background-color', '#fff');
+    });
+    $(this).find('.dropArea').on('dragover', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    });
+    $(this).find('.dropArea').on('drop', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var uploadFiles = e.originalEvent.dataTransfer.files;
+      for (var i = 0; i < uploadFiles.length; i++) {
+        var fileUpload = new FileUpload(uploadFiles[i], $(self));
+        fileUpload.start();
+      }
+    });
+  };
+
   $.fn.fileUpload = function(options) {
     _settings = $.extend(_defaults, options);
     var $this = this;
@@ -165,6 +193,10 @@
     $(_settings.uploadButton).on('click', function() {
       _$fileButton.trigger('click');
     });
+
+    if (_settings.enableDragAndDrop) {
+      _initDragAndDrop.call(this);
+    }
 
     // ファイルが選択されたらアップロードする。
     _$fileButton.on('change', function() {

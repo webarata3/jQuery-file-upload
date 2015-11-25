@@ -84,3 +84,10 @@ pre, pre *, code, kbd, pre span.keyword, textarea {
   background-color: #c9302c;
   border-color: #ac2925;
 }
+
+.dropArea {
+  border: solid 1px #d9d9d9;
+  border-radius: 5px;
+  height: 3em;
+  width: 20em;
+}
