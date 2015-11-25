@@ -86,8 +86,18 @@ pre, pre *, code, kbd, pre span.keyword, textarea {
 }
 
 .dropArea {
-  border: solid 1px #d9d9d9;
-  border-radius: 5px;
-  height: 3em;
-  width: 20em;
+  border: solid 1px transparent;
+  height: 60%;
+  padding: 5px;
+  width: 80%;
+}
+
+.dragEnter {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.dragLeave {
+  background-color: transparent;
+  border-color: transparent;
 }
