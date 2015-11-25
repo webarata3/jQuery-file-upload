@@ -38,16 +38,16 @@
         var borderLeftWidth = Math.floor(progressStatus * barWidth);
         this.$progressBar.css('border-left-width', borderLeftWidth + 'px');
       }
-  	},
-  	failCallBack: function() {
-  	  this.$transferStatus.text('エラー');
-  	},
-   stopCallBack: function() {
-     if (this.ajax) {
-       this.ajax.abort();
-     }
-     this.$stopButton.hide();
-   }
+    },
+    failCallBack: function() {
+      this.$transferStatus.text('エラー');
+    },
+    stopCallBack: function() {
+      if (this.ajax) {
+        this.ajax.abort();
+      }
+      this.$stopButton.hide();
+    }
   });
 })(jQuery);
   </script>
