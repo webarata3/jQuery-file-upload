@@ -49,7 +49,7 @@
       } else {
         this.$transferStatus.text('ファイルサイズの上限を超えています');
       }
-      console.log(xhr, textStatus, errorThrown);
+      this.$deleteButton.hide();
     },
     stopCallBack: function() {
       if (this.ajax) {
