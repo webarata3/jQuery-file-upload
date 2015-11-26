@@ -1,4 +1,4 @@
-<%@page language="java"  pageEncoding="utf-8" %><%--
+    <%@page language="java"  pageEncoding="utf-8" %><%--
 --%><%@page contentType="text/html; charset=utf-8" %><%--
 --%><!DOCTYPE html>
 <html lang="ja">
@@ -42,7 +42,13 @@
       }
     },
     failCallBack: function(xhr, textStatus, errorThrown) {
-      this.$transferStatus.text('エラー');
+      console.log(xhr);
+      console.log(textStatus);
+      if (xhr.status === 409) {
+        this.$transferStatus.text('同名のファイルがあります');
+      } else {
+        this.$transferStatus.text('ファイルサイズの上限を超えています');
+      }
       console.log(xhr, textStatus, errorThrown);
     },
     stopCallBack: function() {
