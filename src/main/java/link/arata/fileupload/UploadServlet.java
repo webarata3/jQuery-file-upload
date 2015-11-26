@@ -32,6 +32,11 @@ public class UploadServlet extends HttpServlet {
         if (!Files.exists(outputDir)) {
             Files.createDirectory(outputDir);
         }
+        // ファイルが重複している場合409を返す
+        if (Files.exists(outputDir.resolve(name))) {
+            response.sendError(HttpServletResponse.SC_CONFLICT, "ファイル名が重複しています");
+            return;
+        }
 
         try (InputStream is = part.getInputStream()) {
             Files.copy(is, outputDir.resolve(name));

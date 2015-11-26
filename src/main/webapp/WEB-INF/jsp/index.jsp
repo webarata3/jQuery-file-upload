@@ -41,8 +41,9 @@
         this.$progressBar.css('border-left-width', borderLeftWidth + 'px');
       }
     },
-    failCallBack: function() {
+    failCallBack: function(xhr, textStatus, errorThrown) {
       this.$transferStatus.text('エラー');
+      console.log(xhr, textStatus, errorThrown);
     },
     stopCallBack: function() {
       if (this.ajax) {
