@@ -52,7 +52,6 @@ pre, pre *, code, kbd, pre span.keyword, textarea {
 
 .transferStatus {
   float: left;
-  height: calc(1.2em - 6px);
   padding: 3px;
   width: calc(29em - 18.5em - 20px);
 }
