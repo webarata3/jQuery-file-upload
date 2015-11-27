@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-@WebServlet(name = "Upload", urlPatterns = { "/upload" })
+@WebServlet("/upload")
 @MultipartConfig(fileSizeThreshold = 1, maxFileSize = 700 * 1024 * 1024, location = "/Users/arata/Desktop/t")
 public class UploadServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
