@@ -17,11 +17,7 @@
     abortCallBack: function() {},
     doneCallBack: function() {},
     failCallBack: function() {},
-    stopCallBack: function() {
-      if (this.ajax) {
-        this.ajax.abort();
-      }
-    },
+    stopCallBack: function() {},
     deleteCallBack: function() {},
     dragEnterCallBack: function() {},
     dragLeaveCallBack: function() {},
@@ -58,11 +54,14 @@
     // コンストラクタ
     this.$upload = $upload;
     this.$uploadInfo = this.$upload.find(_settings.uploadInfo);
-    this.$uploadInfoRow = $('<div>').addClass(_settings.uploadInfoRowClass);
+    this.$uploadInfoRow = $('<div></div>').addClass(_settings.uploadInfoRowClass);
     this.$uploadInfo.append(this.$uploadInfoRow);
     this.fileName = uploadFile.name;
     this.fileSize = uploadFile.size;
     this.loadedSize = 0;
+
+    // stopButtonを押して停止したかどうか
+    this.explicitStop = false;
 
     // 行内の要素
     this.$uploadInfoRow.html(_settings.rowHtml);
@@ -147,6 +146,10 @@
    * アップロードを明示して停止する際のメソッド
    */
   FileUpload.prototype.stop = function() {
+    if (this.ajax) {
+      this.explicitStop = true;
+      this.ajax.abort();
+    }
     _settings.call.stopCallBack(this);
   };
 

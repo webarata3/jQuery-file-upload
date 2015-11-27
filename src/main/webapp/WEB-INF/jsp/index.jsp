@@ -42,20 +42,22 @@
       }
     },
     failCallBack: function(xhr, textStatus, errorThrown) {
-      console.log(xhr);
-      console.log(textStatus);
+      if (this.explicitStop) return;
       if (xhr.status === 409) {
         this.$transferStatus.text('同名のファイルがあります');
       } else {
         this.$transferStatus.text('ファイルサイズの上限を超えています');
       }
-      this.$deleteButton.hide();
+      if (this.$stopButton) this.$stopButton.hide();
+      if (this.$deleteButton) this.$deleteButton.hide();
     },
     stopCallBack: function() {
+      this.explicitStop = true;
       if (this.ajax) {
         this.ajax.abort();
       }
-      this.$stopButton.hide();
+      this.$transferStatus.text('アップロードを停止しました');
+      if (this.$stoppButton) this.$stopButton.hide();
     },
     dragEnterCallBack: function($dropArea) {
       $dropArea.removeClass('dragLeave');
