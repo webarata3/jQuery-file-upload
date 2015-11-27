@@ -9,6 +9,8 @@
     fileButton: '#file',
     uploadInfo: '.uploadInfo',
     uploadInfoRowClass: 'uploadInfoRow',
+    stopButton: '.stopButton',
+    deleteButton: '.deleteButton',
     dropArea: '.dropArea',
     enableDragAndDrop: true,
     progressCallBack: function() {},
@@ -20,6 +22,7 @@
         this.ajax.abort();
       }
     },
+    deleteCallBack: function() {},
     dragEnterCallBack: function() {},
     dragLeaveCallBack: function() {},
     dragOverCallBack: function() {},
@@ -36,9 +39,7 @@
       $fileName: '.fileName',
       $transferSize: '.transferSize',
       $transferStatus: '.transferStatus',
-      $progressBar: '.progressBar',
-      $stopButton: '.stopButton',
-      $deleteButton: '.deleteButton'
+      $progressBar: '.progressBar'
     }
   };
 
@@ -76,9 +77,20 @@
 
     // イベント処理
     var self = this;
-    this.$stopButton.on('click', function() {
-      _settings.stopCallBack.call(self);
-    });
+    this.$stopButton = this.$uploadInfoRow.find(_settings.stopButton);
+    this.$deleteButton = this.$uploadInfoRow.find(_settings.deleteButton);
+    
+    if (this.$stopButton) {
+      this.$stopButton.on('click', function() {
+        _settings.stopCallBack.call(self);
+      });
+    }
+    
+    if (this.$deleteButton) {
+      this.$deleteButton.on('click', function() {
+        console.log('delete');
+      });
+    }
   };
 
   FileUpload.prototype.start = function() {
