@@ -13,7 +13,7 @@
   <div id="upload">
    <div class="dropArea">
     <input type="button" id="uploadButton" value="ファイルを選択">
-    <input type="file" id="file" multiple="multiple" style="display: none;">
+    <input type="file" id="file" multiple="multiple">
     <div class="uploadInfo"></div>
    </div>
   </div>
@@ -40,6 +40,9 @@
         var borderLeftWidth = Math.floor(progressStatus * barWidth);
         this.$progressBar.css('border-left-width', borderLeftWidth + 'px');
       }
+    },
+    doneCallBack: function(data) {
+      this.fileId = data.fileId;
     },
     failCallBack: function(xhr, textStatus, errorThrown) {
       if (this.explicitStop) return;

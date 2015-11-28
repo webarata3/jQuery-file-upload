@@ -5,6 +5,7 @@
 
   var _defaults = {
     url: 'upload',
+    deleteUrl: 'upload',
     uploadButton: '#uploadButton',
     fileButton: '#file',
     uploadInfo: '.uploadInfo',
@@ -18,7 +19,19 @@
     doneCallBack: function() {},
     failCallBack: function() {},
     stopCallBack: function() {},
-    deleteCallBack: function() {},
+    deleteCallBack: function() {
+      var self = this;
+      if (!this.fileId) return;
+      $.ajax({
+        url: _settings.deleteUrl + '/' + this.fileId,
+        cache: false,
+        method: 'delete',
+      }).done(function() {
+        self.$transferStatus.text('サーバーから削除しました')
+      }).fail(function(xhr, textStatus, errorThrown) {
+        // エラーの場合も削除完了？
+      });
+    },
     dragEnterCallBack: function() {},
     dragLeaveCallBack: function() {},
     dragOverCallBack: function() {},
@@ -87,7 +100,7 @@
     
     if (this.$deleteButton) {
       this.$deleteButton.on('click', function() {
-        console.log('delete');
+        _settings.deleteCallBack.call(self);
       });
     }
   };

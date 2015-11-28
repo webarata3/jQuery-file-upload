@@ -20,6 +20,10 @@ pre, pre *, code, kbd, pre span.keyword, textarea {
   display: none;
 }
 
+input[type=file] {
+  display: none;
+}
+
 .uploadInfo {
   width: 32.5em;
 }
