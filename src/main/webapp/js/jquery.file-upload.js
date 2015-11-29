@@ -31,6 +31,7 @@
       }).fail(function(xhr, textStatus, errorThrown) {
         // エラーの場合も削除完了？
       });
+      if (this.$deleteButton) this.$deleteButton.hide();
     },
     dragEnterCallBack: function() {},
     dragLeaveCallBack: function() {},
