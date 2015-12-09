@@ -21,6 +21,7 @@
   <script src="js/jquery.file-upload.js"></script>
   <script>
 (function($) {
+  'use strict';
   $('#upload').fileUpload({
     progressCallBack: function() {
       var loadedSize = this.loadedSize;
