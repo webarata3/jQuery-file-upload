@@ -16,7 +16,7 @@ require('./jquery.file-upload');
       var barWidth = this.$progressBar.width() ? this.$progressBar.width() : 1;
       var progressStatus = loadedSize / fileSize;
       if (progressStatus === 1) {
-        this.$transferStatus.text('アップロード完了');
+        this.$transferStatus.text('アップロード完了');
         this.$stopButton.hide();
         this.$deleteButton.show();
       } else {
