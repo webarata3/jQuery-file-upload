@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba90135d-59e1-4be6-a4d6-7f8589773b3c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/jquery.file-upload.sample1.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/jquery.file-upload.sample1.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/jquery.file-upload.sample1.min.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/jquery.file-upload.sample1.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/jquery.file-upload.sample1.min.js.map" afterPath="$PROJECT_DIR$/src/main/webapp/js/jquery.file-upload.sample1.min.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/src/jquery.file-upload.js" afterPath="$PROJECT_DIR$/src/main/webapp/src/jquery.file-upload.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/src/sample1.js" afterPath="$PROJECT_DIR$/src/main/webapp/src/sample1.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="jQuery-file-upload.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,7 +36,7 @@
       <file leaf-file-name="sample1.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/src/sample1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.7111651">
+            <state vertical-scroll-proportion="1.6383495">
               <caret line="47" column="10" selection-start-line="47" selection-start-column="10" selection-end-line="47" selection-end-column="10" />
               <folding />
             </state>
@@ -746,7 +742,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/src/sample1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.7111651">
+        <state vertical-scroll-proportion="1.6383495">
           <caret line="47" column="10" selection-start-line="47" selection-start-column="10" selection-end-line="47" selection-end-column="10" />
           <folding />
         </state>
