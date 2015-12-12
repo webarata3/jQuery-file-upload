@@ -21,6 +21,7 @@
     deleteButton: '.deleteButton',
     dropArea: '.dropArea',
     enableDragAndDrop: true,
+    startUploadCallBack: function() {},
     progressCallBack: function() {},
     abortCallBack: function() {},
     doneUploadCallBack: function() {},
@@ -95,17 +96,16 @@
     }
     
     if (this.$deleteButton) {
-      var self = this;
       this.$deleteButton.on('click', function() {
         if (!self.fileId) return;
         $.ajax({
           url: _settings.deleteUrl + '/' + self.fileId,
           cache: false,
-          method: 'delete',
+          method: 'delete'
         }).done(function() {
           _settings.doneDeleteCallBack.call(self);
         }).fail(function(xhr, textStatus, errorThrown) {
-          _settings.failDeleteCallBack.call(self);
+          _settings.failDeleteCallBack.call(self, xhr, textStatus, errorThrown);
         });
         if (self.$deleteButton) self.$deleteButton.hide();
       });
@@ -114,9 +114,10 @@
 
   FileUpload.prototype.start = function() {
     var self = this;
+    _settings.startUploadCallBack.call(self);
     var _ajaxSettings = $.extend({
       xhr: function() {
-        var xhr = new global.XMLHttpRequest();
+        var xhr = new window.XMLHttpRequest();
         // アップロードの進捗
         xhr.upload.addEventListener('progress', function(event) {
           self.progress.call(self, event);
@@ -136,7 +137,7 @@
       _settings.doneUploadCallBack.call(self, data);
       self.ajax = null;
     }).fail(function(xhr, textStatus, errorThrown) {
-      _settings.failUploadgrCallBack.call(self, xhr, textStatus, errorThrown);
+      _settings.failUploadCallBack.call(self, xhr, textStatus, errorThrown);
       self.ajax = null;
     });
   };
