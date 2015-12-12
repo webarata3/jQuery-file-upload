@@ -26,20 +26,8 @@
     doneUploadCallBack: function() {},
     failUploadCallBack: function() {},
     stopCallBack: function() {},
-    deleteCallBack: function() {
-      var self = this;
-      if (!this.fileId) return;
-      $.ajax({
-        url: _settings.deleteUrl + '/' + this.fileId,
-        cache: false,
-        method: 'delete',
-      }).done(function() {
-        self.$transferStatus.text('サーバーから削除しました')
-      }).fail(function(xhr, textStatus, errorThrown) {
-        // エラーの場合も削除完了？
-      });
-      if (this.$deleteButton) this.$deleteButton.hide();
-    },
+    doneDeleteCallBack: function() {},
+    failDeleteCallBack: function() {},
     dragEnterCallBack: function() {},
     dragLeaveCallBack: function() {},
     dragOverCallBack: function() {},
@@ -107,8 +95,19 @@
     }
     
     if (this.$deleteButton) {
+      var self = this;
       this.$deleteButton.on('click', function() {
-        _settings.deleteCallBack.call(self);
+        if (!self.fileId) return;
+        $.ajax({
+          url: _settings.deleteUrl + '/' + self.fileId,
+          cache: false,
+          method: 'delete',
+        }).done(function() {
+          _settings.doneDeleteCallBack.call(self);
+        }).fail(function(xhr, textStatus, errorThrown) {
+          _settings.failDeleteCallBack.call(self);
+        });
+        if (self.$deleteButton) self.$deleteButton.hide();
       });
     }
   };

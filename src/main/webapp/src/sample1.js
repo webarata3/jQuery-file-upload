@@ -45,6 +45,9 @@ require('./jquery.file-upload');
       this.$transferStatus.text('アップロードを停止しました');
       if (this.$stoppButton) this.$stopButton.hide();
     },
+    doneDeleteCallBack: function() {
+      this.$transferStatus.text('サーバーから削除しました');
+    },
     dragEnterCallBack: function($dropArea) {
       $dropArea.removeClass('dragLeave');
       $dropArea.addClass('dragEnter');
