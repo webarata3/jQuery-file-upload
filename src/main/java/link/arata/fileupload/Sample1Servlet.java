@@ -8,14 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/index")
-public class IndexServlet extends HttpServlet {
+@WebServlet("/sample1")
+public class Sample1Servlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getSession();
 
-        request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/sample1.jsp").forward(request, response);
     }
 }

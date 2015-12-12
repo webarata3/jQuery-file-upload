@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>ファイルアップロード</title>
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/sample1.css">
  </head>
  <body>
   <div id="upload">
@@ -17,6 +17,6 @@
     <div class="uploadInfo"></div>
    </div>
   </div>
-  <script src="js/jquery.file-upload.dev.min.js"></script>
+  <script src="js/jquery.file-upload.sample1.min.js"></script>
  </body>
 </html>
