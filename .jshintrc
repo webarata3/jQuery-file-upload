@@ -14,6 +14,7 @@
   "globals": {
     "jQuery": false,
     "$": false,
-    "require": false
+    "require": false,
+    "module": false
   }
 }
