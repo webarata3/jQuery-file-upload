@@ -5,11 +5,13 @@ require('./jquery.file-upload');
 (function($) {
   'use strict';
   $('#upload').fileUpload({
+    startUploadCallBack: function() {
+      this.$fileName.text(this.fileName);
+    },
     progressCallBack: function() {
       var loadedSize = this.loadedSize;
       var fileSize = this.fileSize;
 
-      this.$fileName.text(this.fileName);
       this.$transferSize.text(this.getDispFileSize(loadedSize) + ' / ' +
         this.getDispFileSize(fileSize));
 

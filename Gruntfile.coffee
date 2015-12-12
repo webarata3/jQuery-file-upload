@@ -19,6 +19,12 @@ module.exports = (grunt) ->
             '<%= dirs.src %>/jquery.file-upload.js'
             '<%= dirs.src %>/sample1.js'
           ]
+      sample2:
+        files:
+          '<%= dirs.js %>/jquery.file-upload.sample2.js': [
+            '<%= dirs.src %>/jquery.file-upload.js'
+            '<%= dirs.src %>/sample2.js'
+          ]
     uglify:
       product:
         files:
@@ -27,7 +33,6 @@ module.exports = (grunt) ->
           preserveComments: 'some'
           sourceMap: true
           sourceMapName: '<%= dirs.js %>/jquery.file-upload.min.js.map'
-#          sourceMapIncludeSources: true
           banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %> */'
       sample1:
         files:
@@ -36,7 +41,14 @@ module.exports = (grunt) ->
           preserveComments: 'some'
           sourceMap: true
           sourceMapName: '<%= dirs.js %>/jquery.file-upload.sample1.min.js.map'
-#          sourceMapIncludeSources: true
+          banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %> */'
+      sample2:
+        files:
+          '<%= dirs.js %>/jquery.file-upload.sample2.min.js': '<%= dirs.js %>/jquery.file-upload.sample2.js'
+        options:
+          preserveComments: 'some'
+          sourceMap: true
+          sourceMapName: '<%= dirs.js %>/jquery.file-upload.sample2.min.js.map'
           banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %> */'
     watch:
       scripts:
@@ -61,3 +73,4 @@ module.exports = (grunt) ->
 
   grunt.registerTask('default', ['uglify:product'])
   grunt.registerTask('sample1', ['browserify:sample1', 'uglify:sample1'])
+  grunt.registerTask('sample2', ['browserify:sample2', 'uglify:sample2'])
