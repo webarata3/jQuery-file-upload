@@ -15,7 +15,32 @@ jQueryによるファイルのアップロードを補助するプラグイン�
 
 ## 使い方
 
+基本的な使い方としては、jQueryに続いてjquery.file-uploadプラグインを読み込みます。
 
+```HTML
+<script src="jquery.js"></script>
+<script src="jquery.file-upload.min.js"></script>
+```
+
+プラグインで指定する要素は通常のdiv等の要素になります。要素内に、input[type=file]の要素を持つ要素を指定します。例えば次のように指定します。
+
+```HTML
+<div id="upload">
+ <div class="dropArea">
+  <input type="button" id="uploadButton" value="ファイルを選択">
+  <input type="file" id="file" multiple="multiple">
+  <div class="uploadInfo"></div>
+ </div>
+</div>
+```
+
+に対して、
+
+```JavaScript
+$('#upload').fileUpload({ オプション });
+```
+
+とします。
 
 ## 設定
 
