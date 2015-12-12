@@ -24,10 +24,10 @@ require('./jquery.file-upload');
         this.$progressBar.css('border-left-width', borderLeftWidth + 'px');
       }
     },
-    doneCallBack: function(data) {
+    doneUploadCallBack: function(data) {
       this.fileId = data.fileId;
     },
-    failCallBack: function(xhr, textStatus, errorThrown) {
+    failUploadCallBack: function(xhr, textStatus, errorThrown) {
       if (this.explicitStop) return;
       if (xhr.status === 409) {
         this.$transferStatus.text('同名のファイルがあります');

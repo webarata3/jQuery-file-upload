@@ -23,8 +23,8 @@
     enableDragAndDrop: true,
     progressCallBack: function() {},
     abortCallBack: function() {},
-    doneCallBack: function() {},
-    failCallBack: function() {},
+    doneUploadCallBack: function() {},
+    failUploadCallBack: function() {},
     stopCallBack: function() {},
     deleteCallBack: function() {
       var self = this;
@@ -134,10 +134,10 @@
     }, _defaultAjaxSettings);
 
     self.ajax = $.ajax(_ajaxSettings).done(function(data) {
-      _settings.doneCallBack.call(self, data);
+      _settings.doneUploadCallBack.call(self, data);
       self.ajax = null;
     }).fail(function(xhr, textStatus, errorThrown) {
-      _settings.failCallBack.call(self, xhr, textStatus, errorThrown);
+      _settings.failUploadgrCallBack.call(self, xhr, textStatus, errorThrown);
       self.ajax = null;
     });
   };
