@@ -9230,7 +9230,7 @@ require('./jquery.file-upload');
       var barWidth = this.$progressBar.width() ? this.$progressBar.width() : 1;
       var progressStatus = loadedSize / fileSize;
       if (progressStatus === 1) {
-        this.$transferStatus.text('アップロード完了');
+        this.$transferStatus.text('アップロード完了');
         this.$stopButton.hide();
         this.$deleteButton.show();
       } else {
@@ -9238,10 +9238,10 @@ require('./jquery.file-upload');
         this.$progressBar.css('border-left-width', borderLeftWidth + 'px');
       }
     },
-    doneCallBack: function(data) {
+    doneUploadCallBack: function(data) {
       this.fileId = data.fileId;
     },
-    failCallBack: function(xhr, textStatus, errorThrown) {
+    failUploadCallBack: function(xhr, textStatus, errorThrown) {
       if (this.explicitStop) return;
       if (xhr.status === 409) {
         this.$transferStatus.text('同名のファイルがあります');
@@ -9302,8 +9302,8 @@ require('./jquery.file-upload');
     enableDragAndDrop: true,
     progressCallBack: function() {},
     abortCallBack: function() {},
-    doneCallBack: function() {},
-    failCallBack: function() {},
+    doneUploadCallBack: function() {},
+    failUploadCallBack: function() {},
     stopCallBack: function() {},
     deleteCallBack: function() {
       var self = this;
@@ -9413,10 +9413,10 @@ require('./jquery.file-upload');
     }, _defaultAjaxSettings);
 
     self.ajax = $.ajax(_ajaxSettings).done(function(data) {
-      _settings.doneCallBack.call(self, data);
+      _settings.doneUploadCallBack.call(self, data);
       self.ajax = null;
     }).fail(function(xhr, textStatus, errorThrown) {
-      _settings.failCallBack.call(self, xhr, textStatus, errorThrown);
+      _settings.failUploadgrCallBack.call(self, xhr, textStatus, errorThrown);
       self.ajax = null;
     });
   };
