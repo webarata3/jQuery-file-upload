@@ -13,11 +13,11 @@ module.exports = (grunt) ->
           port: 8000
           hostname: '*'
     browserify:
-      dev:
+      sample1:
         files:
-          '<%= dirs.js %>/jquery.file-upload.dev.js': [
+          '<%= dirs.js %>/jquery.file-upload.sample1.js': [
             '<%= dirs.src %>/jquery.file-upload.js'
-            '<%= dirs.src %>/dev.js'
+            '<%= dirs.src %>/sample1.js'
           ]
     uglify:
       product:
@@ -29,13 +29,13 @@ module.exports = (grunt) ->
           sourceMapName: '<%= dirs.js %>/jquery.file-upload.min.js.map'
 #          sourceMapIncludeSources: true
           banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %> */'
-      dev:
+      sample1:
         files:
-          '<%= dirs.js %>/jquery.file-upload.dev.min.js': '<%= dirs.js %>/jquery.file-upload.dev.js'
+          '<%= dirs.js %>/jquery.file-upload.sample1.min.js': '<%= dirs.js %>/jquery.file-upload.sample1.js'
         options:
           preserveComments: 'some'
           sourceMap: true
-          sourceMapName: '<%= dirs.js %>/jquery.file-upload.dev.min.js.map'
+          sourceMapName: '<%= dirs.js %>/jquery.file-upload.sample1.min.js.map'
 #          sourceMapIncludeSources: true
           banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %> */'
     watch:
@@ -60,4 +60,4 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-contrib-watch')
 
   grunt.registerTask('default', ['uglify:product'])
-  grunt.registerTask('dev', ['browserify:dev', 'uglify:dev'])
+  grunt.registerTask('sample1', ['browserify:sample1', 'uglify:sample1'])
