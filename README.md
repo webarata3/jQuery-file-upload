@@ -46,6 +46,47 @@ $('#upload').fileUpload({ オプション });
 
 ## 設定
 
+設定の一覧とデフォルト値は次のとおりです。
+
+```JavaScript
+url: 'upload',
+deleteUrl: 'upload',
+uploadButton: '#uploadButton',
+fileButton: '#file',
+uploadInfo: '.uploadInfo',
+uploadInfoRowClass: 'uploadInfoRow',
+stopButton: '.stopButton',
+deleteButton: '.deleteButton',
+enableDragAndDrop: true,
+dropArea: '.dropArea',
+startUploadCallBack: function() {},
+progressCallBack: function() {},
+abortCallBack: function() {},
+doneUploadCallBack: function() {},
+failUploadCallBack: function() {},
+stopCallBack: function() {},
+doneDeleteCallBack: function() {},
+failDeleteCallBack: function() {},
+dragEnterCallBack: function() {},
+dragLeaveCallBack: function() {},
+dragOverCallBack: function() {},
+// 行内の要素
+rowHtml:
+  '<div class="fileName"></div>' +
+  '<div class="transferSize"></div>' +
+  '<div class="transferStatus"><div class="progressBar"></div></div>' +
+  '<div class="operation">' +
+  '<input type="button" class="stopButton" value="停止">' +
+  '<input type="button" class="deleteButton hide" value="削除">' +
+  '</div>',
+rowEl: {
+  $fileName: '.fileName',
+  $transferSize: '.transferSize',
+  $transferStatus: '.transferStatus',
+  $progressBar: '.progressBar'
+}
+```
+
 ### url
 
 アップロードするファイルを送信するURL。このURLに1ファイルに対して、1回POSTメソッドのリクエストが発行されます。デフォルトは`upload`です。
