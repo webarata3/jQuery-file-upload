@@ -200,4 +200,4 @@ rowHtmlで定義したHTMLを操作するために指定するために変数名
 
 ## ライセンス
 
-Apache 2.0 License
+MIT
