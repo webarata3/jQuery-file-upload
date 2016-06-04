@@ -11,7 +11,7 @@ jQueryによるファイルのアップロードを補助するプラグイン�
 
 イメージとしては、次のようなものになります。
 
-![動作イメージ](https://webarata.github.io/jQuery-file-upload/image/fileupload.gif)
+![動作イメージ](https://webarata3.github.io/jQuery-file-upload/image/fileupload.gif)
 
 ## 使い方
 
