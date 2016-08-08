@@ -1,4 +1,4 @@
-package link.arata.fileupload;
+package link.webarata3.fileupload;
 
 import java.io.IOException;
 import java.io.InputStream;
