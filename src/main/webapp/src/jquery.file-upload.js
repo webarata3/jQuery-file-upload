@@ -1,11 +1,4 @@
-(function (factory) {
-  'use strict';
-  if (typeof module === 'object' && typeof module.exports === 'object') {
-    module.exports = factory(require('jquery'), window, document);
-  } else {
-    factory(jQuery, window, document);
-  }
-}(function ($, window, document, undefined) {
+(function ($, window) {
   'use strict';
 
   var _settings = {};
@@ -249,4 +242,4 @@
       _upload(_$fileButton[0].files, $this);
     });
   };
-}));
+})(jQuery, this);

@@ -17,11 +17,11 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 @WebServlet({ "/upload", "/upload/*" })
-@MultipartConfig(fileSizeThreshold = 1, maxFileSize = 700 * 1024 * 1024, location = "/Users/arata/Desktop/t")
+@MultipartConfig(fileSizeThreshold = 1, maxFileSize = 700 * 1024 * 1024, location = "/Users/arata/Desktop/location")
 public class UploadServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    private static final String TEMP_DIR = "/Users/arata/Desktop/o";
+    private static final String TEMP_DIR = "/Users/arata/Desktop/temp";
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
