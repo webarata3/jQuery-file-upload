@@ -1,7 +1,3 @@
-global.jQuery = require('jquery');
-global.$ = global.jQuery;
-require('./jquery.file-upload');
-
 (function($) {
   'use strict';
   $('#upload').fileUpload({
