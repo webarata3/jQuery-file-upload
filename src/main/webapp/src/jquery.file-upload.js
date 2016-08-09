@@ -42,7 +42,7 @@
     }
   };
 
-  // ajaxので不変な設定
+  // ajaxの不変な設定
   var _defaultAjaxSettings = {
     type: 'post',
     processData: false,
