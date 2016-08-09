@@ -17,7 +17,7 @@
     <div class="uploadInfo"></div>
    </div>
   </div>
-  <script src="js/jquery-2.2.4.min.js"></script>
+  <script src="js/jquery-3.1.0.min.js"></script>
   <script src="js/jquery.file-upload-1.0.0.min.js"></script>
   <script src="js/sample2.js"></script>
  </body>

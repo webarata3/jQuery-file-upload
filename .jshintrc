@@ -13,8 +13,6 @@
   "eqnull": true,
   "globals": {
     "jQuery": false,
-    "$": false,
-    "require": false,
-    "module": false
+    "$": false
   }
 }
