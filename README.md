@@ -34,7 +34,7 @@ jQueryによるファイルのアップロードを補助するプラグイン�
 </div>
 ```
 
-というHTMLに対して、
+のようなHTMLに対して、
 
 ```JavaScript
 $('#upload').fileUpload({ オプション });
